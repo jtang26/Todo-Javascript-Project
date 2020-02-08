@@ -1,0 +1,201 @@
+
+
+
+<!doctype html>
+<html>
+<link href="style.css" type="text/css" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <title>Todo List</title>
+  <meta name="Todo" />
+</head>
+<body>
+<div class="inputbox">
+  <h1 id="title">Todo List</h1>
+    <form class="input" action="index.html" method="post" id="newTodoForm">
+      <input type="text" name="m" placeholder="New Todo" id="i1">
+    </form>
+    <!-- <form class="" action="index.html" method="post">
+      <button type="button" id="add">Add</button>
+    </form> -->
+</div>
+<div class="first">
+  <img src="button.png" alt="a" id="x1">
+  <img src="check.png" alt="b" id="check1">
+  <p id="t1">Organize</p>
+</div>
+  <div class="second">
+    <img src="button.png" alt="a" id="x2">
+    <img src="check.png" alt="b" id="check2">
+    <p id="t2">Clean</p>
+</div>
+<div class="third">
+  <img src="button.png" alt="a" id="x3">
+  <img src="check.png" alt="b" id="check3">
+  <p id="t3">Mop</p>
+</div>
+  <div class="fourth">
+      <img src="button.png" alt="a" id="x4">
+      <img src="check.png" alt="b" id="check4">
+      <p id="t4">Work Out</p>
+</div>
+<script>
+  var x1 =document.getElementById('x1');
+  var x2 =document.getElementById('x2');
+  var x3 =document.getElementById('x3');
+  var x4 =document.getElementById('x4');
+  var check1=document.getElementById('check1');
+  var check2=document.getElementById('check2');
+  var check3=document.getElementById('check3');
+  var check4=document.getElementById('check4');
+  var current;
+  var next;
+  var button = document.getElementById('add');
+  var xarray = [x1,x2,x3,x4];
+  var checkmark=[check1,check2,check3,check4];
+  for(i=0;i<xarray.length;i++){
+    xarray[i].addEventListener("click", remove, false);
+    console.log();
+  }
+  function remove() {
+    // console.log((this).index());
+    current = document.getElementById(this.id);
+    current.parentNode.style.display='none';
+}
+for(i=0;i<checkmark.length;i++){
+  checkmark[i].addEventListener("click", check, false);
+  console.log();
+}
+function check(){
+  next = document.getElementById(this.id);
+  next.parentNode.style.backgroundColor="lightgrey";
+}
+var apiKey = "714a3301bc99bceda76c0a27a42297406a844f9674e5ad6e17ba953bce9c3f82";
+
+var listRequest = new XMLHttpRequest();
+listRequest.onreadystatechange = function() {
+  if (this.readyState === 4 && this.status === 200) {
+    console.log(this.responseText);
+      var todos =JSON.parse(this.responseText);
+      console.log(todos);
+      for(var index=0;index < todos.length;index++){
+        renderTodo(todos[index]);
+      }
+
+  } else if (this.readyState == 4) {
+      // this.status !== 200, error from server
+      console.log(this.responseText);
+  }
+
+}
+listRequest.open("GET", "https://api.kraigh.net/todos", true);
+listRequest.setRequestHeader("x-api-key", apiKey);
+listRequest.send();
+
+document.getElementById('newTodoForm').addEventListener("submit", function(event){
+  event.preventDefault();
+  console.log("formsubmit");
+  // Setting variable for form input (get from HTML form)
+  console.log(i1.value);
+  var data = {
+     text: i1.value
+   };
+  // Initalize AJAX Request
+  var createRequest = new XMLHttpRequest();
+
+  // Response handler
+  createRequest.onreadystatechange = function() {
+
+      // Wait for readyState = 4 & 200 response
+      if (this.readyState == 4 && this.status == 200) {
+        console.log("ajaxDOM")
+          renderTodo(JSON.parse(this.responseText));
+          console.log(this.responseText);
+      } else if (this.readyState == 4) {
+          // this.status !== 200, error from server
+          console.log(this.responseText);
+      }
+  }
+  createRequest.open("POST", "https://api.kraigh.net/todos", true);
+  createRequest.setRequestHeader("Content-type", "application/json");
+  createRequest.setRequestHeader("x-api-key", apiKey);
+  createRequest.send(JSON.stringify(data));
+  // deleteTodo();
+});
+
+function renderTodo(todoData) {
+  var divd = document.createElement('div');
+  divd.setAttribute("id", todoData.id);
+  divd.classList.add("divv");
+  if(todoData.completed) {
+    divd.style.backgroundColor="lightgrey";
+  }
+  //https://www.w3schools.com/jsref/dom_obj_image.asp
+  // for adding img src https://stackoverflow.com/questions/2735881/adding-images-to-the-html-with-javascript
+  var pic1 = document.createElement('IMG');
+  pic1.src="button.png";
+  pic1.classList.add("xx");
+  divd.appendChild(pic1);
+
+  var pic2 = document.createElement('IMG');
+  pic2.src="check.png"
+  pic2.classList.add("cc");
+  divd.appendChild(pic2);
+
+  var text = document.createElement('P');
+  text.appendChild(document.createTextNode(todoData.text));
+
+  //https://stackoverflow.com/questions/13941055/add-a-string-of-text-into-an-input-field-when-user-clicks-a-button
+  text.classList.add("tt");
+  divd.appendChild(text);
+
+  document.body.appendChild(divd);
+  pic1.addEventListener("click", deleteTodo);
+  pic2.addEventListener("click", completeTodo);
+  document.getElementById("i1").value='';
+}
+function completeTodo(event) {
+  var todoId = event.target.parentNode.id;
+  var data = {
+    completed: true
+  };
+  var completeRequest = new XMLHttpRequest();
+  completeRequest.onreadystatechange = function() {
+
+      // Wait for readyState = 4 & 200 response
+      if (this.readyState == 4 && this.status == 200) {
+          event.target.parentNode.style.backgroundColor="lightgrey";
+      } else if (this.readyState == 4) {
+          // this.status !== 200, error from server
+          console.log(this.responseText);
+      }
+  }
+  completeRequest.open("PUT", "https://api.kraigh.net/todos/" + todoId, true);
+  completeRequest.setRequestHeader("Content-type", "application/json");
+  completeRequest.setRequestHeader("x-api-key", apiKey);
+  completeRequest.send(JSON.stringify(data));
+}
+function deleteTodo(event) {
+  var todoId = event.target.parentNode.id;
+  var deleteRequest = new XMLHttpRequest();
+  deleteRequest.onreadystatechange = function() {
+
+      // Wait for readyState = 4 & 200 response
+      if (this.readyState == 4 && this.status == 200) {
+        console.log("why?");
+
+        event.target.parentNode.style.display='none';
+        console.log("not?");
+      } else if (this.readyState == 4) {
+          // this.status !== 200, error from server
+          console.log(this.responseText);
+      }
+  }
+  deleteRequest.open("DELETE", "https://api.kraigh.net/todos/" + todoId, true);
+  deleteRequest.setRequestHeader("Content-type", "application/json");
+  deleteRequest.setRequestHeader("x-api-key", apiKey);
+  deleteRequest.send();
+}
+</script>
+</body>
+</html>

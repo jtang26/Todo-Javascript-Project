@@ -1,0 +1,250 @@
+#title{
+  text-align: center;
+  height: 40%;
+  width: 50%;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  padding:0;
+  margin-left: 25%;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+#x1{
+  width:30px;
+  height:30px;
+  margin-left: 2%;
+  border-style: groove;
+  border-radius: 1px;
+}
+#check1{
+  width:30px;
+  height:30px;
+  margin-left: 70%;
+  border-style: groove;
+  border-radius: 1px;
+}
+#x2{
+  width:30px;
+  height:30px;
+  margin-left: 2%;
+  border-style: groove;
+  border-radius: 1px;
+}
+#check2{
+  width:30px;
+  height:30px;
+  margin-left: 70%;
+  border-style: groove;
+  border-radius: 1px;
+}
+#x3{
+  width:30px;
+  height:30px;
+  margin-left: 2%;
+  border-style: groove;
+  border-radius: 1px;
+}
+#check3{
+  width:30px;
+  height:30px;
+  margin-left: 70%;
+  border-style: groove;
+  border-radius: 1px;
+}
+#x4{
+  width:30px;
+  height:30px;
+  margin-left: 2%;
+  border-style: groove;
+  border-radius: 1px;
+}
+#check4{
+  width:30px;
+  height:30px;
+  margin-left: 70%;
+  border-style: groove;
+  border-radius: 1px;
+}
+#xI{
+  width:30px;
+  height:30px;
+  margin-left: 2%;
+  border-style: groove;
+  border-radius: 1px;
+}
+#checkInput{
+  width:30px;
+  height:30px;
+  margin-left: 70%;
+  border-style: groove;
+  border-radius: 1px;
+}
+.xx{
+  width:30px;
+  height:30px;
+  margin-left: 2%;
+  border-style: groove;
+  border-radius: 1px;
+}
+.cc{
+  width:30px;
+  height:30px;
+  margin-left: 70%;
+  border-style: groove;
+  border-radius: 1px;
+}
+.tt{
+  text-align: center;
+  font-weight:bold;
+  font-size: 20;
+  border-style: double;
+  border-radius: 25px;
+  width: 50%;
+  margin-left: 20%;
+  margin-top: 0px;
+}
+#t1{
+  text-align: center;
+  font-weight:bold;
+  font-size: 20;
+  border-style: double;
+  border-radius: 25px;
+  width: 50%;
+  margin-left: 20%;
+  margin-top: 0px;
+}
+#t2{
+  text-align: center;
+  font-weight:bold;
+  font-size: 20;
+  border-style: double;
+  border-radius: 25px;
+  width: 50%;
+  margin-left: 20%;
+  margin-top: 0px;
+}
+#t3{
+  text-align: center;
+  font-weight:bold;
+  font-size: 20;
+  border-style: double;
+  border-radius: 25px;
+  width: 50%;
+  margin-left: 20%;
+  margin-top: 0px;
+}
+#t4{
+  text-align: center;
+  font-weight:bold;
+  font-size: 20;
+  border-style: double;
+  border-radius: 25px;
+  width: 50%;
+  margin-left: 20%;
+  margin-top: 0px;
+}
+#i1{
+  width: 60%;
+  height:30%;
+  margin-left: 5%;
+  text-indent: 5%;
+  border-style: ridge;
+  border-radius: 25px;
+}
+#add{
+  position:relative;
+  width:20%;
+  height:20%;
+  margin-left:225px;
+  bottom:50px;
+  border-radius: 25px;
+}
+.divv{
+  margin:auto;
+  margin-top: 10px;
+  height:80px;
+  max-width: 300px;
+  border-style: solid;
+  border-radius: 2px;
+  border-color: black;
+  background-color: white;
+}
+.first{
+  margin:auto;
+  margin-top: 10px;
+  height:80px;
+  max-width: 300px;
+  border-style: solid;
+  border-radius: 2px;
+  border-color: black;
+  background-color: white;
+}
+.second{
+    margin:auto;
+  margin-top: 10px;
+  height:80px;
+  max-width: 300px;
+  border-style: solid;
+  border-radius: 2px;
+  border-color: black;
+  background-color: white;
+}
+.third{
+  margin:auto;
+  margin-top: 10px;
+  height:80px;
+  max-width: 300px;
+  border-style: solid;
+  border-radius: 2px;
+  border-color: black;
+  background-color: white;
+}
+.fourth{
+  margin:auto;
+  margin-top:10px;
+  height:80px;
+  max-width: 300px;
+  border-style: solid;
+  border-radius: 2px;
+  border-color: black;
+  background-color: white;
+}
+.inputbox{
+  margin:auto;
+  margin-top:10px;
+  height:130px;
+  max-width: 300px;
+  border-style: solid;
+  border-radius: 2px;
+  border-color: black;
+  background-color: white;
+}
+body{
+  background-color: cyan;
+}
+.shadow{
+  margin-left: 40%;
+  margin-top: 1%;
+  margin-bottom: 0px;
+  height:80px;
+  width:20%;
+  border-style: solid;
+  border-radius: 2px;
+  border-color: black;
+  background-color: lightgrey;
+}
+.hide{
+  display: none;
+}
+/*
+mobile port
+https://stackoverflow.com/questions/31097169/how-to-make-a-webpage-mobile-friendly-with-css-media-queries
+*/
+@media screen and (max-width: 480px) {
+  .first, .second, .third, .fourth {
+    height:5%;
+    width:40%;
+  }
+}
